@@ -1,0 +1,1174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alert_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AlertInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="what" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="additional" Type="varchar" MaxLength="50" />
+          <Property Name="timeDate" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'testDatabase.dbo.AlertTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AlertTable">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BDY_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="BQI_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="DPI_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="DSPT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="DST_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="eTable">
+          <Key>
+            <PropertyRef Name="Eid" />
+          </Key>
+          <Property Name="Eid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="profilePic" Type="varchar" MaxLength="50" />
+          <Property Name="sex" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="varchar" MaxLength="50" />
+          <Property Name="bloodGroup" Type="varchar" MaxLength="50" />
+          <Property Name="contactInfo" Type="varchar" MaxLength="50" />
+          <Property Name="eContactInfo" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="qual" Type="varchar" MaxLength="50" />
+          <Property Name="designation" Type="varchar" MaxLength="50" />
+          <Property Name="currStationCode" Type="varchar" MaxLength="50" />
+          <Property Name="stationSixMonths" Type="varchar" MaxLength="50" />
+          <Property Name="sectionTI" Type="varchar" MaxLength="50" />
+          <Property Name="DateofApp" Type="varchar" MaxLength="50" />
+          <Property Name="DoJoinStation" Type="varchar" MaxLength="50" />
+          <Property Name="lastPME" Type="varchar" MaxLength="50" />
+          <Property Name="lastRCDate" Type="varchar" MaxLength="50" />
+          <Property Name="awards" Type="varchar" MaxLength="50" />
+          <Property Name="tiCount" Type="varchar" MaxLength="50" />
+          <Property Name="currStationName" Type="varchar" MaxLength="50" />
+          <Property Name="empLevel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="priority" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="matter" Type="varchar" MaxLength="50" />
+          <Property Name="timeDate" Type="datetime" />
+          <Property Name="sendTo" Type="varchar" MaxLength="50" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" />
+          <Property Name="approved" Type="varchar" MaxLength="50" />
+          <Property Name="response" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KEY_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="KPPR_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="LCR_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="LeaveTable">
+          <Key>
+            <PropertyRef Name="Lid" />
+          </Key>
+          <Property Name="Lid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fromDate" Type="date" Nullable="false" />
+          <Property Name="toDate" Type="date" Nullable="false" />
+          <Property Name="noOfDates" Type="int" Nullable="false" />
+          <Property Name="empLevel" Type="int" Nullable="false" />
+          <Property Name="station" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="verified" Type="int" />
+          <Property Name="VerifiedDate" Type="date" />
+          <Property Name="leaveType" Type="varchar" MaxLength="50" />
+          <Property Name="sectionTI" Type="int" />
+          <Property Name="designation" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="reason" Type="varchar(max)" />
+          <Property Name="byRef" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mailTable">
+          <Key>
+            <PropertyRef Name="mailID" />
+          </Key>
+          <Property Name="mailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="senderPfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mailTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="receverPfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mailBody" Type="varchar" MaxLength="100" />
+          <Property Name="mtimeDate" Type="datetime" Nullable="false" />
+          <Property Name="read" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MAP_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="newsTable">
+          <Key>
+            <PropertyRef Name="Nid" />
+          </Key>
+          <Property Name="Nid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imgLink" Type="varchar(max)" />
+          <Property Name="title" Type="varchar(max)" Nullable="false" />
+          <Property Name="inBrief" Type="varchar(max)" Nullable="false" />
+          <Property Name="newsTime" Type="date" />
+        </EntityType>
+        <EntityType Name="QTable">
+          <Key>
+            <PropertyRef Name="Qid" />
+          </Key>
+          <Property Name="Qid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="varchar(max)" Nullable="false" />
+          <Property Name="opt1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opt2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opt3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opt4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="answer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuResultTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mark1" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SA_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="sampleTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateStudent" Type="varchar" MaxLength="50" />
+          <Property Name="numberOfPresence" Type="int" />
+          <Property Name="threshold" Type="int" />
+        </EntityType>
+        <EntityType Name="SLY_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="SXT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="TNT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityType Name="TPT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pfNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day1" Type="varchar" MaxLength="50" />
+          <Property Name="Day2" Type="varchar" MaxLength="50" />
+          <Property Name="Day3" Type="varchar" MaxLength="50" />
+          <Property Name="Day4" Type="varchar" MaxLength="50" />
+          <Property Name="Day5" Type="varchar" MaxLength="50" />
+          <Property Name="Day6" Type="varchar" MaxLength="50" />
+          <Property Name="Day7" Type="varchar" MaxLength="50" />
+          <Property Name="week" Type="int" />
+        </EntityType>
+        <EntityContainer Name="testDatabaseModelStoreContainer">
+          <EntitySet Name="Alert_Table" EntityType="Self.Alert_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlertInfo" EntityType="Self.AlertInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BDY_R_Table" EntityType="Self.BDY_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BQI_R_Table" EntityType="Self.BQI_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DPI_R_Table" EntityType="Self.DPI_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DSPT_R_Table" EntityType="Self.DSPT_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DST_R_Table" EntityType="Self.DST_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eTable" EntityType="Self.eTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GTable" EntityType="Self.GTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KEY_R_Table" EntityType="Self.KEY_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KPPR_R_Table" EntityType="Self.KPPR_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LCR_R_Table" EntityType="Self.LCR_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaveTable" EntityType="Self.LeaveTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mailTable" EntityType="Self.mailTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAP_R_Table" EntityType="Self.MAP_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="newsTable" EntityType="Self.newsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QTable" EntityType="Self.QTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuResultTable" EntityType="Self.QuResultTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SA_R_Table" EntityType="Self.SA_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sampleTable" EntityType="Self.sampleTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SLY_R_Table" EntityType="Self.SLY_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SXT_R_Table" EntityType="Self.SXT_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TNT_R_Table" EntityType="Self.TNT_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPT_R_Table" EntityType="Self.TPT_R_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlertTable" EntityType="Self.AlertTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AlertTable].[ID] AS [ID], 
+    [AlertTable].[password] AS [password]
+    FROM [dbo].[AlertTable] AS [AlertTable]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alert_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AlertInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="what" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="additional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="timeDate" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="BDY_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BQI_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DPI_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DSPT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DST_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="eTable">
+          <Key>
+            <PropertyRef Name="Eid" />
+          </Key>
+          <Property Name="Eid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="profilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eContactInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="currStationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stationSixMonths" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sectionTI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateofApp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DoJoinStation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastPME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastRCDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="awards" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tiCount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="currStationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="timeDate" Type="DateTime" Precision="3" />
+          <Property Name="sendTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="response" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KEY_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KPPR_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LCR_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LeaveTable">
+          <Key>
+            <PropertyRef Name="Lid" />
+          </Key>
+          <Property Name="Lid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fromDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="toDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="noOfDates" Type="Int32" Nullable="false" />
+          <Property Name="empLevel" Type="Int32" Nullable="false" />
+          <Property Name="station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="verified" Type="Int32" />
+          <Property Name="VerifiedDate" Type="DateTime" Precision="0" />
+          <Property Name="leaveType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sectionTI" Type="Int32" />
+          <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="byRef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mailTable">
+          <Key>
+            <PropertyRef Name="mailID" />
+          </Key>
+          <Property Name="mailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="senderPfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mailTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="receverPfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mailBody" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mtimeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="read" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MAP_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="newsTable">
+          <Key>
+            <PropertyRef Name="Nid" />
+          </Key>
+          <Property Name="Nid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imgLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inBrief" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="newsTime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="QTable">
+          <Key>
+            <PropertyRef Name="Qid" />
+          </Key>
+          <Property Name="Qid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opt1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opt2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opt3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opt4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuResultTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mark1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SA_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sampleTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numberOfPresence" Type="Int32" />
+          <Property Name="threshold" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SLY_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SXT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TNT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TPT_R_Table">
+          <Key>
+            <PropertyRef Name="Rig" />
+          </Key>
+          <Property Name="Rig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pfNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="week" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AlertTable">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="testDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alert_Table" EntityType="Self.Alert_Table" />
+          <EntitySet Name="AlertInfoes" EntityType="Self.AlertInfo" />
+          <EntitySet Name="BDY_R_Table" EntityType="Self.BDY_R_Table" />
+          <EntitySet Name="BQI_R_Table" EntityType="Self.BQI_R_Table" />
+          <EntitySet Name="DPI_R_Table" EntityType="Self.DPI_R_Table" />
+          <EntitySet Name="DSPT_R_Table" EntityType="Self.DSPT_R_Table" />
+          <EntitySet Name="DST_R_Table" EntityType="Self.DST_R_Table" />
+          <EntitySet Name="eTables" EntityType="Self.eTable" />
+          <EntitySet Name="GTables" EntityType="Self.GTable" />
+          <EntitySet Name="KEY_R_Table" EntityType="Self.KEY_R_Table" />
+          <EntitySet Name="KPPR_R_Table" EntityType="Self.KPPR_R_Table" />
+          <EntitySet Name="LCR_R_Table" EntityType="Self.LCR_R_Table" />
+          <EntitySet Name="LeaveTables" EntityType="Self.LeaveTable" />
+          <EntitySet Name="mailTables" EntityType="Self.mailTable" />
+          <EntitySet Name="MAP_R_Table" EntityType="Self.MAP_R_Table" />
+          <EntitySet Name="newsTables" EntityType="Self.newsTable" />
+          <EntitySet Name="QTables" EntityType="Self.QTable" />
+          <EntitySet Name="QuResultTables" EntityType="Self.QuResultTable" />
+          <EntitySet Name="SA_R_Table" EntityType="Self.SA_R_Table" />
+          <EntitySet Name="sampleTables" EntityType="Self.sampleTable" />
+          <EntitySet Name="SLY_R_Table" EntityType="Self.SLY_R_Table" />
+          <EntitySet Name="SXT_R_Table" EntityType="Self.SXT_R_Table" />
+          <EntitySet Name="TNT_R_Table" EntityType="Self.TNT_R_Table" />
+          <EntitySet Name="TPT_R_Table" EntityType="Self.TPT_R_Table" />
+          <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testDatabaseModelStoreContainer" CdmEntityContainer="testDatabaseEntities">
+          <EntitySetMapping Name="Alert_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.Alert_Table">
+              <MappingFragment StoreEntitySet="Alert_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlertInfoes">
+            <EntityTypeMapping TypeName="testDatabaseModel.AlertInfo">
+              <MappingFragment StoreEntitySet="AlertInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="what" ColumnName="what" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="additional" ColumnName="additional" />
+                <ScalarProperty Name="timeDate" ColumnName="timeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BDY_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.BDY_R_Table">
+              <MappingFragment StoreEntitySet="BDY_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BQI_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.BQI_R_Table">
+              <MappingFragment StoreEntitySet="BQI_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DPI_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.DPI_R_Table">
+              <MappingFragment StoreEntitySet="DPI_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DSPT_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.DSPT_R_Table">
+              <MappingFragment StoreEntitySet="DSPT_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DST_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.DST_R_Table">
+              <MappingFragment StoreEntitySet="DST_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.eTable">
+              <MappingFragment StoreEntitySet="eTable">
+                <ScalarProperty Name="Eid" ColumnName="Eid" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="profilePic" ColumnName="profilePic" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="contactInfo" ColumnName="contactInfo" />
+                <ScalarProperty Name="eContactInfo" ColumnName="eContactInfo" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="qual" ColumnName="qual" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="currStationCode" ColumnName="currStationCode" />
+                <ScalarProperty Name="stationSixMonths" ColumnName="stationSixMonths" />
+                <ScalarProperty Name="sectionTI" ColumnName="sectionTI" />
+                <ScalarProperty Name="DateofApp" ColumnName="DateofApp" />
+                <ScalarProperty Name="DoJoinStation" ColumnName="DoJoinStation" />
+                <ScalarProperty Name="lastPME" ColumnName="lastPME" />
+                <ScalarProperty Name="lastRCDate" ColumnName="lastRCDate" />
+                <ScalarProperty Name="awards" ColumnName="awards" />
+                <ScalarProperty Name="tiCount" ColumnName="tiCount" />
+                <ScalarProperty Name="currStationName" ColumnName="currStationName" />
+                <ScalarProperty Name="empLevel" ColumnName="empLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.GTable">
+              <MappingFragment StoreEntitySet="GTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="matter" ColumnName="matter" />
+                <ScalarProperty Name="timeDate" ColumnName="timeDate" />
+                <ScalarProperty Name="sendTo" ColumnName="sendTo" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="response" ColumnName="response" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KEY_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.KEY_R_Table">
+              <MappingFragment StoreEntitySet="KEY_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KPPR_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.KPPR_R_Table">
+              <MappingFragment StoreEntitySet="KPPR_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCR_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.LCR_R_Table">
+              <MappingFragment StoreEntitySet="LCR_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.LeaveTable">
+              <MappingFragment StoreEntitySet="LeaveTable">
+                <ScalarProperty Name="Lid" ColumnName="Lid" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="noOfDates" ColumnName="noOfDates" />
+                <ScalarProperty Name="empLevel" ColumnName="empLevel" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="VerifiedDate" ColumnName="VerifiedDate" />
+                <ScalarProperty Name="leaveType" ColumnName="leaveType" />
+                <ScalarProperty Name="sectionTI" ColumnName="sectionTI" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="byRef" ColumnName="byRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mailTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.mailTable">
+              <MappingFragment StoreEntitySet="mailTable">
+                <ScalarProperty Name="mailID" ColumnName="mailID" />
+                <ScalarProperty Name="senderPfNumber" ColumnName="senderPfNumber" />
+                <ScalarProperty Name="mailTitle" ColumnName="mailTitle" />
+                <ScalarProperty Name="receverPfNumber" ColumnName="receverPfNumber" />
+                <ScalarProperty Name="mailBody" ColumnName="mailBody" />
+                <ScalarProperty Name="mtimeDate" ColumnName="mtimeDate" />
+                <ScalarProperty Name="read" ColumnName="read" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAP_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.MAP_R_Table">
+              <MappingFragment StoreEntitySet="MAP_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="newsTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.newsTable">
+              <MappingFragment StoreEntitySet="newsTable">
+                <ScalarProperty Name="Nid" ColumnName="Nid" />
+                <ScalarProperty Name="imgLink" ColumnName="imgLink" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="inBrief" ColumnName="inBrief" />
+                <ScalarProperty Name="newsTime" ColumnName="newsTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.QTable">
+              <MappingFragment StoreEntitySet="QTable">
+                <ScalarProperty Name="Qid" ColumnName="Qid" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="opt1" ColumnName="opt1" />
+                <ScalarProperty Name="opt2" ColumnName="opt2" />
+                <ScalarProperty Name="opt3" ColumnName="opt3" />
+                <ScalarProperty Name="opt4" ColumnName="opt4" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuResultTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.QuResultTable">
+              <MappingFragment StoreEntitySet="QuResultTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="mark1" ColumnName="mark1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SA_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.SA_R_Table">
+              <MappingFragment StoreEntitySet="SA_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sampleTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.sampleTable">
+              <MappingFragment StoreEntitySet="sampleTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="dateStudent" ColumnName="dateStudent" />
+                <ScalarProperty Name="numberOfPresence" ColumnName="numberOfPresence" />
+                <ScalarProperty Name="threshold" ColumnName="threshold" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SLY_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.SLY_R_Table">
+              <MappingFragment StoreEntitySet="SLY_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SXT_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.SXT_R_Table">
+              <MappingFragment StoreEntitySet="SXT_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TNT_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.TNT_R_Table">
+              <MappingFragment StoreEntitySet="TNT_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPT_R_Table">
+            <EntityTypeMapping TypeName="testDatabaseModel.TPT_R_Table">
+              <MappingFragment StoreEntitySet="TPT_R_Table">
+                <ScalarProperty Name="Rig" ColumnName="Rig" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="Day1" ColumnName="Day1" />
+                <ScalarProperty Name="Day2" ColumnName="Day2" />
+                <ScalarProperty Name="Day3" ColumnName="Day3" />
+                <ScalarProperty Name="Day4" ColumnName="Day4" />
+                <ScalarProperty Name="Day5" ColumnName="Day5" />
+                <ScalarProperty Name="Day6" ColumnName="Day6" />
+                <ScalarProperty Name="Day7" ColumnName="Day7" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlertTables">
+            <EntityTypeMapping TypeName="testDatabaseModel.AlertTable">
+              <MappingFragment StoreEntitySet="AlertTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
