@@ -18,41 +18,84 @@ namespace Railway_Admin
 {
     public partial class Preview2 : Form
     {
-        
+        public static String filelocation = System.IO.Path.Combine(
+   Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+   "Railway_Record"
+);
+        // Checking whether the folder exists !......
+
         public Preview2()
         {
+
+            //MessageBox.Show(Form1.stIP);
             InitializeComponent();
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=192.168.1.4;Initial Catalog=testDatabase;Integrated Security=True";
-            con.Open();
+            try { 
+            bool exists = System.IO.Directory.Exists(filelocation);
+            if (!exists)
+                System.IO.Directory.CreateDirectory(filelocation);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            }
+
+            try
+            {
+             
+            SqlConnection con = new SqlConnection(
+                "Data Source=103.74.139.201,1433;Network Library=DBMSSOCN;Initial Catalog=dosthDatabase;User ID=dosthDB;Password=dosthDB");
+                con.Open();
             //MessageBox.Show("Welcome !..");
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_TYPE='BASE TABLE'";
             cmd.Connection = con;
             SqlDataReader dr = cmd.ExecuteReader();
             int i = 0;
+            StringBuilder sb = new StringBuilder(show.Text);
             String st = " ";
             if (dr.HasRows == true)
             {
                 while (dr.Read())
                 {
                     ++i;
-                    st = st + dr[2] + "\n";
-                    //MessageBox.Show("Table Name : " + arr[i]);
+                        sb.AppendLine("\t"+dr[2]);
+                        sb.AppendLine(" ");
+                        //st = st + " \n" + dr[2] + "\n";
+                        
 
+                    }
+                    show.Text = sb + " ";
+                    //MessageBox.Show("Table Name : " + st);
                 }
-                show.Text = st;
+            else
+            {
+                MessageBox.Show("Unable to retrieve data from Database...!");
+            }
+            }catch (Exception)
+            {
+                MessageBox.Show("Unable to retrieve data from Database...!");
+
             }
         }
 
+
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection();
-            sqlCon.ConnectionString = @"Data Source=192.168.1.4;Initial Catalog=testDatabase;Integrated Security=True";
-            sqlCon.Open();
-            String st1 = tb3.Text;
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * from "+st1, sqlCon);
+            try { 
+            SqlConnection sqlCon =  new SqlConnection(
+                "Data Source=103.74.139.201,1433;Network Library=DBMSSOCN;Initial Catalog=dosthDatabase;User ID=dosthDB;Password=dosthDB");
+                sqlCon.Open();
+            String st1 = tb3.Text;
+            String filename = "test";
+            if (tb4.Text != "") {
+                filename = tb4.Text;
+                    }
+
+            
+             
+             String Samp_filelocation = filelocation +@"\"+filename + ".xls";
+             SqlDataAdapter da = new SqlDataAdapter("SELECT * from "+st1, sqlCon);
             System.Data.DataTable dtMainSQLData = new System.Data.DataTable();
             da.Fill(dtMainSQLData);
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
@@ -72,11 +115,40 @@ namespace Railway_Admin
                         ExcelApp.Cells[i, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
                 }
             }
-            MessageBox.Show("" + dtMainSQLData.Rows.Count + "hai");
-            ExcelApp.ActiveWorkbook.SaveCopyAs("C:/Users/sumit/test.xls");
+            MessageBox.Show("Download Completed..");
+            tb5.Text = "File Location : "+ Samp_filelocation;
+            ExcelApp.ActiveWorkbook.SaveCopyAs(Samp_filelocation);
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString);
+                //MessageBox.Show("Error in exporting the file. \n 1.Error can be in server IP Address \n 2.Incorrect table name. \n 3.Incorrect export file name.", "Error in Exporting Excel file..", MessageBoxButtons.OK);
+                tb3.Text = "";
+                tb4.Text = "";
+                groupLocation.Visible = true;
+                groupExcel.Enabled = false;
+            }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnDoneLocation_Click(object sender, EventArgs e)
+        {
+            if (tbLocation.Text != "")
+            {
+                String samploc = tbLocation.Text + "/SampleRailway_Record/";
+                MessageBox.Show(samploc);
+                groupLocation.Visible = false;
+                groupExcel.Enabled = true;
+            }
+        }
+
+        
     }
 
 
